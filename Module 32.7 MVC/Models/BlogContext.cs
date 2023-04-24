@@ -15,7 +15,7 @@ namespace Module_32._7_MVC.Models
         public DbSet<UserPost> UserPosts { get; set; }
 
         /// Ссылка на таблицу Requests
-        public DbSet<Request> Requests { get; set; }
+        public DbSet<LogRequest> LogRequests { get; set; }
         // Логика взаимодействия с таблицами в БД
         public BlogContext(DbContextOptions<BlogContext> options) : base(options)
         {

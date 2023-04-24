@@ -19,20 +19,20 @@ namespace Module_32._7_MVC.Repositories
 
         public async Task LogRequest(string url)
         {
-            var request = new Request
+            var request = new LogRequest
             {
                 Id = Guid.NewGuid(),
                 Date = DateTime.Now,
                 Url = url
             };
 
-            _context.Requests.Add(request);
+            _context.LogRequests.Add(request);
             await _context.SaveChangesAsync();
         }
-        public async Task<Request[]> GetRequests()
+        public async Task<LogRequest[]> GetRequests()
         {
             // Получим всех активных пользователей
-            return await _context.Requests.ToArrayAsync();
+            return await _context.LogRequests.ToArrayAsync();
         }
     }
 }

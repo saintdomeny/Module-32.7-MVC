@@ -9,11 +9,11 @@ namespace Module_32._7_MVC.Middlewares
     public class LoggingMiddleware
     {
         private readonly RequestDelegate _next;
-        private readonly RequestRepository _requestRepository;
+        private readonly IRequestRepository _requestRepository;
         /// <summary>
         ///  Middleware-компонент должен иметь конструктор, принимающий RequestDelegate
         /// </summary>
-        public LoggingMiddleware(RequestDelegate next, RequestRepository requestRepository)
+        public LoggingMiddleware(RequestDelegate next, IRequestRepository requestRepository)
         {
             _next = next;
             _requestRepository = requestRepository;
@@ -50,7 +50,7 @@ namespace Module_32._7_MVC.Middlewares
         {
             LogConsole(context);
             await LogFile(context);
-            await _requestRepository.LogRequest(context.Request.Path);
+            await _requestRepository.LogRequest($"http://{context.Request.Host.Value + context.Request.Path}");
             // Передача запроса далее по конвейеру
             await _next.Invoke(context);
         }

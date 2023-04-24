@@ -6,6 +6,6 @@ namespace Module_32._7_MVC.Repositories
     public interface IRequestRepository
     {
         Task LogRequest(string url);
-        Task<Request[]> GetRequests();
+        Task<LogRequest[]> GetRequests();
     }
 }
